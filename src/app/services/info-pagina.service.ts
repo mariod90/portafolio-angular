@@ -4,7 +4,7 @@ import { infoPagina } from '../interfaces/info-pagina.interface';
 
 @Injectable()
 export class InfoPaginaService {
-  info: infoPagina;
+  info: infoPagina[] = [];
   cargada = false;
   equipo: any[] = [];
   constructor( private http:HttpClient ) {
@@ -15,7 +15,7 @@ export class InfoPaginaService {
   private cargarInfo(){
     //Leer .json
     this.http.get('assets/data/data-pagina.json')
-    .subscribe( (resp: infoPagina) => {
+    .subscribe( (resp: infoPagina[]) => {
       this.cargada = true;
       this.info = resp;
     });
